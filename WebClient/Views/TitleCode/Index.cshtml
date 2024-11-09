@@ -1,0 +1,93 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Title Codes</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+
+        a {
+            text-decoration: none;
+            color: #4CAF50;
+            padding: 6px 12px;
+            border: 1px solid #4CAF50;
+            border-radius: 4px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        a:hover {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .add-title-code {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        .add-title-code:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <tr>
+            <th>Titlecodeid</th>
+            <th>Titlecodenumber</th>
+            <th>Classname</th>
+            <th>Subjectname</th>
+            <th>Action</th>
+        </tr>
+        @foreach (BusinessObject.DTO.TitleCodeDTO titleCodeDTO in Model)
+        {
+            <tr>
+                <td><a asp-action="loadAnswer" asp-controller="Answer" asp-route-idMaDe="@titleCodeDTO.Titlecodeid">Chấm điểm cho mã đề @titleCodeDTO.Titlecodeid</a></td>
+                <td>@titleCodeDTO.Titlecodenumber</td>
+                <td>@titleCodeDTO.Classname</td>
+                <td>@titleCodeDTO.Subjectname</td>
+                <td>
+                    <a asp-action="loadAnswerToUpdate" asp-controller="Answer" asp-route-idMaDe="@titleCodeDTO.Titlecodeid">Thêm,Sửa đáp án</a>
+                    <a asp-controller="TitleCode" asp-action="deleteTC" asp-route-idMaDe="@titleCodeDTO.Titlecodeid">Xóa mã đề</a>
+                </td>
+            </tr>
+        }
+    </table>
+    <a asp-controller="TitleCode" asp-action="turnToAddTitleCodeForm" class="add-title-code">Thêm mã đề mới</a>
+</body>
+</html>

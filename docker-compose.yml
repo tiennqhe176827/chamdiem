@@ -1,0 +1,54 @@
+version: '3.8'
+
+services:
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: sqlserver
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=sa
+    ports:
+      - "1433:1433"
+    networks:
+      - app-network
+    volumes:
+      - sql_data:/var/opt/mssql
+
+  webapi:
+    build:
+      context: .
+      dockerfile: WebAPIProject/Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__DefaultConnection=Server=sqlserver;Database=prjprn;User Id=sa;Password=sa;
+    ports:
+      - "7089:80"
+    depends_on:
+      - sqlserver
+    networks:
+      - app-network
+
+  webclient:
+    build:
+      context: .
+      dockerfile: WebClient/Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "7156:80"
+    depends_on:
+      - webapi
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  sql_data:
+    driver: local
+    driver_opts:
+      o: bind
+      type: none
+      device: "D:/hoctap/PRN231/Project(DONOTDELETE)/sql_data"

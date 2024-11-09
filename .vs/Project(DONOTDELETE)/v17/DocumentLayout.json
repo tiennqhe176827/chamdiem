@@ -1,0 +1,49 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\PRN231\\Project(DONOTDELETE)\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{3DEBBFAF-AA99-4CF2-B321-7093AE2F44FE}|WebClient\\WebClient.csproj|d:\\prn231\\project(donotdelete)\\webclient\\views\\answer\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3DEBBFAF-AA99-4CF2-B321-7093AE2F44FE}|WebClient\\WebClient.csproj|solutionrelative:webclient\\views\\answer\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:18:0:{e8034f19-ab72-4f06-83fd-f6832b41aa63}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\PRN231\\Project(DONOTDELETE)\\WebClient\\Views\\Answer\\Index.cshtml",
+              "RelativeDocumentMoniker": "WebClient\\Views\\Answer\\Index.cshtml",
+              "ToolTip": "D:\\PRN231\\Project(DONOTDELETE)\\WebClient\\Views\\Answer\\Index.cshtml",
+              "RelativeToolTip": "WebClient\\Views\\Answer\\Index.cshtml",
+              "ViewState": "AgIAACwBAAAAAAAAAAAcwEoBAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-09T11:17:12.218Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

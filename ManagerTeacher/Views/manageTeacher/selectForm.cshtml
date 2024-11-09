@@ -1,0 +1,48 @@
+﻿@model BusinessObject.Models.TeacherSubject
+
+@{
+    var teachers = ViewBag.Teachers as List<BusinessObject.Models.Teacher>;
+    var subjects = ViewBag.Subjecttables as List<BusinessObject.Models.Subjecttable>;
+}
+
+<h2>Select Teacher and Subject</h2>
+
+<form asp-action="selectTS" asp-controller="manageTeacher">
+    <div class="form-group">
+        <label for="teacherSelect">Select Teacher:</label>
+        <select id="teacherSelect" asp-for="Teacherid" class="form-control" required>
+            <option value="">-- Select a Teacher --</option>
+            @if (teachers != null && teachers.Count > 0)
+            {
+                foreach (var teacher in teachers)
+                {
+                    <option value="@teacher.Teacherid">@teacher.Teachername</option>
+                }
+            }
+            else
+            {
+                <option value="">No teachers available</option>
+            }
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="subjectSelect">Select Subject:</label>
+        <select id="subjectSelect" asp-for="Subjectid" class="form-control" required>
+            <option value="">-- Select a Subject --</option>
+            @if (subjects != null && subjects.Count > 0)
+            {
+                foreach (var subject in subjects)
+                {
+                    <option value="@subject.Subjectid">@subject.Subjectname</option>
+                }
+            }
+            else
+            {
+                <option value="">No subjects available</option>
+            }
+        </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>

@@ -1,0 +1,74 @@
+﻿@model BusinessObject.DTO.TitleCodeDTOAdd
+@{
+    List<BusinessObject.Models.Class> classes = ViewBag.ClassList;
+    List<BusinessObject.DTO.TSDTO> TeacherSubjectList = ViewBag.TeacherSubjectList;
+}
+
+<style>
+    form {
+        width: 50%;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #f9f9f9;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    h1 {
+        font-size: 1.5rem;
+        margin-bottom: 15px;
+    }
+    select, input[type="number"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 1rem;
+    }
+    input[type="submit"] {
+        width: 100%;
+        padding: 10px;
+        background-color: #28a745;
+        border: none;
+        color: white;
+        font-size: 1rem;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    input[type="submit"]:hover {
+        background-color: #218838;
+    }
+    label {
+        font-size: 1rem;
+        font-weight: bold;
+    }
+</style>
+
+<form asp-action="addNewTitleCode" asp-controller="TitleCode">
+    <h1>Thêm mã đề mới</h1>
+
+    <label for="Classid">Chọn lớp học</label>
+    <select asp-for="Classid">
+        @foreach (BusinessObject.Models.Class c in classes)
+        {
+            <option value="@c.Classid">@c.Classname</option>
+        }
+    </select>
+
+    <label for="TeacherSubjectId">Chọn môn học</label>
+    <select asp-for="TeacherSubjectId">
+        @foreach (BusinessObject.DTO.TSDTO ts in TeacherSubjectList)
+        {
+            <option value="@ts.TSId">@ts.Subjectname</option>
+        }
+    </select>
+
+    <label for="Titlecodenumber">Mã đề mới</label>
+    <input type="number" asp-for="Titlecodenumber" />
+
+
+    <label for="Titlecodenumber">Tổng điểm cho mã đề</label>
+    <input type="number" asp-for="totalMark" />
+
+    <input type="submit" value="Thêm mới" />
+</form>

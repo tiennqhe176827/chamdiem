@@ -1,0 +1,70 @@
+﻿
+ @model BusinessObject.ViewModel.AnswerVM
+<h1>Bảng đáp án</h1>
+@if (ViewBag.Error != null)
+{
+    <div class="alert alert-danger">
+        @ViewBag.Error
+    </div>
+}
+else if (ViewBag.Empty != null)
+{
+    <div class="alert alert-warning">
+        @ViewBag.Empty
+    </div>
+
+
+}
+else
+{
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Idcauhoi</th>
+                <th>Causo</th>
+                <th>Đáp án</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null)
+            {
+                foreach (BusinessObject.Models.Answer answer in Model.answersList)
+                {
+                    <tr>
+                        <td>@answer.Idcauhoi</td>
+                        <td>@answer.Causo</td>
+                        <td>
+                            <form asp-action="Update" asp-controller="Answer">
+                                <input type="hidden" asp-for="@Model.Answer.Idcauhoi"  value="@answer.Idcauhoi" />
+                                <input type="text" asp-for="@Model.Answer.Dapan" value="@answer.Dapan" />
+                                <input type="hidden" asp-for="@Model.Answer.Causo"  value="@answer.Causo" />
+                                <button type="submit" class="btn btn-primary">Update</button>
+                            </form>
+                        </td>
+                      
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="4">Không có đáp án nào được tìm thấy.</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+
+
+<h1>Thêm đáp án mới</h1>
+<form asp-action="Add" asp-controller="Answer">
+    <input type="hidden" asp-for="@Model.Answer.Idcauhoi" />
+    <input type="text" asp-for="@Model.Answer.Dapan"  />
+    <input type="hidden" asp-for="@Model.Answer.Causo"  />
+    <button type="submit" class="btn btn-primary">Add new</button>
+</form>
+
+
+
